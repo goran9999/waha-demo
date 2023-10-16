@@ -1,0 +1,33 @@
+{
+  "name": "pgp-whatsapp-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/pgp-whatsapp-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/pgp-whatsapp-e2e/cypress.config.ts",
+        "devServerTarget": "pgp-whatsapp:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "pgp-whatsapp:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "pgp-whatsapp:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/pgp-whatsapp-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["pgp-whatsapp"]
+}
