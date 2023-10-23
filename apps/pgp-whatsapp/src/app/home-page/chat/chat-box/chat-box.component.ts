@@ -24,8 +24,10 @@ import { ChatComponent } from '../chat.component';
 export class ChatBoxComponent implements AfterViewInit {
   @ViewChild('content') content: ElementRef;
   inputValue: '';
+  image: string | undefined;
   @Input() messages: WhatsappMessage[];
   @Input() selectedChat?: WhatsappChat;
+  @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
     private chatComponent: ChatComponent,
@@ -56,12 +58,35 @@ export class ChatBoxComponent implements AfterViewInit {
     this.sendMessage();
   }
 
+  onImageUpload(event: any) {
+    this.convertToBase64(event.target.files[0]);
+  }
+
+  private convertToBase64(file: File) {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const base64Data = reader.result as string;
+      this.image = base64Data;
+    };
+  }
+
+  onUploadFileClick() {
+    this.fileInput.nativeElement.click();
+  }
+
+  onRemoveImage() {
+    this.image = undefined;
+  }
+
   sendMessage() {
     if (this.inputValue !== '' && this.selectedChat) {
       this.whatsappService
-        .sendMessage(this.inputValue, this.selectedChat)
+        .sendMessage(this.inputValue, this.selectedChat, this.image)
         .subscribe();
       this.inputValue = '';
+      this.image = undefined;
       this.scrollToBottom();
     }
   }

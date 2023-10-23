@@ -46,12 +46,13 @@ export class WhatsappService {
     });
   }
 
-  sendMessage(message: string, chat: WhatsappChat) {
+  sendMessage(message: string, chat: WhatsappChat, image?: string) {
     return this.http.post(
       `${this.apiUrl}/whatsapp/sendText`,
       {
         message,
         chat: this.formatWaNumber(chat),
+        image,
       },
       {
         headers: this.getParams(),

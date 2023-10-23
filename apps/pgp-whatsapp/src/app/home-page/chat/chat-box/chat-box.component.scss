@@ -35,6 +35,29 @@
     overflow: scroll;
   }
 
+  &__send-upload {
+    display: flex;
+    gap: 1em;
+    position: absolute;
+    left: 85%;
+    top: 25%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.15em;
+    height: 2em;
+    button {
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      img {
+        width: 2em;
+        height: 2em;
+      }
+    }
+  }
+
   &__chat-img {
     width: 15em;
     height: 15em;
@@ -48,36 +71,51 @@
     border-radius: 20px;
     padding: 1em 0.5em;
     margin-left: 55%;
-    transition-property: transform; /* Specify the property to transition */
-    transition-duration: 1s; /* Set the duration (1 second, for example) */
-    transition-timing-function: ease; /* Choose a timing function (e.g., */
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: ease;
   }
   &__incoming {
     max-width: 15em;
     background-color: $incoming;
     border-radius: 20px;
     padding: 1em 0.5em;
-    transition-property: transform; /* Specify the property to transition */
-    transition-duration: 1s; /* Set the duration (1 second, for example) */
-    transition-timing-function: ease; /* Choose a timing function (e.g., */
+    transition-property: transform;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+  }
+
+  &__choose-img {
+    display: none;
+  }
+  &__uploading-image {
+    position: relative;
+    margin-left: 15px;
+    z-index: 10;
+  }
+  &__remove-img {
+    position: absolute;
+    left: 10%;
+    top: 0%;
+    background: transparent;
+    width: 1.25em;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75em;
+    background-color: rgb(172, 172, 172);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  &__uploading-image-img {
+    width: 4em;
+    height: 4em;
+    border-radius: 10px;
   }
   &__message-send {
     position: relative;
-    button {
-      position: absolute;
-      left: 90%;
-      cursor: pointer;
-      top: 30%;
-      padding: 0;
-      border: none;
-      margin: 0;
-      width: 2em;
-      height: 2em;
-      background: transparent;
-      img {
-        width: 2em;
-        height: 2em;
-      }
-    }
   }
 }

@@ -30,6 +30,10 @@
         </div>
       </ng-template>
     </div>
+    <div class="chat-box__uploading-image" *ngIf="!!image">
+      <button (click)="onRemoveImage()" class="chat-box__remove-img">x</button>
+      <img class="chat-box__uploading-image-img" src="{{ image }}" />
+    </div>
   </div>
   <div class="chat-box__message-send">
     <input
@@ -39,8 +43,20 @@
       placeholder="Input message"
       class="chat-box__message-input"
     />
-    <button (click)="onButtonClickKey()">
-      <img src="../../../../assets/send.png" />
-    </button>
+    <div class="chat-box__send-upload">
+      <input
+        #fileInput
+        class="chat-box__choose-img"
+        type="file"
+        accept="image/*"
+        (change)="onImageUpload($event)"
+      />
+      <button (click)="onUploadFileClick()">
+        <img src="../../../../assets/attach.png" />
+      </button>
+      <button (click)="onButtonClickKey()">
+        <img src="../../../../assets/send.png" />
+      </button>
+    </div>
   </div>
 </div>
