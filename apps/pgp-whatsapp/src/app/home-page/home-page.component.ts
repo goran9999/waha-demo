@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
     const session = this.whapsappService
       .pollSessionStatus()
       .subscribe((res: any) => {
-        this.sessionStatus = res.sessions[0].status;
+        this.sessionStatus = res.sessions[0]?.status;
       });
 
     if (this.hasLinkedWhatsapp && this.sessionStatus === 'WORKING') {

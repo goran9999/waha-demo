@@ -9,12 +9,22 @@
         class="chat-box__from-me"
         *ngIf="message.fromMe; else incomingMessage"
       >
+        <img
+          class="chat-box__chat-img"
+          *ngIf="!!message.mediaUrl"
+          src="{{ message.mediaUrl }}"
+        />
         <p>{{ message.body }}</p>
         <p class="chat-box__time">{{ getMessageTime(message) }}</p>
       </div>
 
       <ng-template #incomingMessage>
         <div class="chat-box__incoming">
+          <img
+            class="chat-box__chat-img"
+            *ngIf="!!message.mediaUrl"
+            src="{{ message.mediaUrl }}"
+          />
           <p>{{ message.body }}</p>
           <p class="chat-box__time">{{ getMessageTime(message) }}</p>
         </div>

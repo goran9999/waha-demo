@@ -18,4 +18,5 @@ export interface WhatsappMessage {
   viewed: boolean;
   session: string;
   sentAt: Date;
+  mediaUrl?: string;
 }

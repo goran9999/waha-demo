@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+
 import { UserService } from '../../services/user.service';
 import { WhatsappService } from '../../services/whatsapp.service';
 import { WsService } from '../../services/ws.service';
@@ -18,8 +18,7 @@ export class LinkWhatsappComponent implements OnInit, OnDestroy {
   constructor(
     private whatsappService: WhatsappService,
     private router: Router,
-    private userService: UserService,
-    private toastrService: ToastrService
+    private userService: UserService
   ) {}
   ngOnDestroy(): void {
     clearInterval(this.pollingInterval);
@@ -40,7 +39,6 @@ export class LinkWhatsappComponent implements OnInit, OnDestroy {
       },
       (err: any) => {
         this.loadingQr = false;
-        this.toastrService.error(err.message);
       }
     );
   }
@@ -57,9 +55,7 @@ export class LinkWhatsappComponent implements OnInit, OnDestroy {
           this.router.navigate([`home/${userId}`]);
         }
       },
-      (err) => {
-        this.toastrService.error(err.message);
-      }
+      (err) => {}
     );
   }
 }

@@ -35,6 +35,12 @@
     overflow: scroll;
   }
 
+  &__chat-img {
+    width: 15em;
+    height: 15em;
+    border-radius: 8px;
+  }
+
   &__from-me {
     max-width: 15em;
     float: right;
