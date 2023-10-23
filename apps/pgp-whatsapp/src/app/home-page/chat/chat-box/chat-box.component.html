@@ -1,0 +1,36 @@
+<div class="chat-box">
+  <div>
+    <div
+      #content
+      class="chat-box__message-wrapper"
+      *ngFor="let message of messages"
+    >
+      <div
+        class="chat-box__from-me"
+        *ngIf="message.fromMe; else incomingMessage"
+      >
+        <p>{{ message.body }}</p>
+        <p class="chat-box__time">{{ getMessageTime(message) }}</p>
+      </div>
+
+      <ng-template #incomingMessage>
+        <div class="chat-box__incoming">
+          <p>{{ message.body }}</p>
+          <p class="chat-box__time">{{ getMessageTime(message) }}</p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="chat-box__message-send">
+    <input
+      (keydown.enter)="onEnterKey()"
+      type="text"
+      [(ngModel)]="inputValue"
+      placeholder="Input message"
+      class="chat-box__message-input"
+    />
+    <button (click)="onButtonClickKey()">
+      <img src="../../../../assets/send.png" />
+    </button>
+  </div>
+</div>

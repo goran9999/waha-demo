@@ -1,0 +1,77 @@
+@import 'apps/pgp-whatsapp/src/_variable.scss';
+
+.chat-box {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__message-input {
+    width: 100%;
+    height: 4em;
+    padding: 0.5em;
+    border: none;
+    border-top: 1px solid $border-color;
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+  }
+
+  &__time {
+    text-align: end;
+    width: 100%;
+    font-size: 0.7em;
+    margin: 0;
+    opacity: 0.6;
+  }
+
+  &__message-wrapper {
+    width: 100%;
+    padding: 1em 0.5em;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+  }
+
+  &__from-me {
+    max-width: 15em;
+    float: right;
+    background-color: $wa-green;
+    border-radius: 20px;
+    padding: 1em 0.5em;
+    margin-left: 55%;
+    transition-property: transform; /* Specify the property to transition */
+    transition-duration: 1s; /* Set the duration (1 second, for example) */
+    transition-timing-function: ease; /* Choose a timing function (e.g., */
+  }
+  &__incoming {
+    max-width: 15em;
+    background-color: $incoming;
+    border-radius: 20px;
+    padding: 1em 0.5em;
+    transition-property: transform; /* Specify the property to transition */
+    transition-duration: 1s; /* Set the duration (1 second, for example) */
+    transition-timing-function: ease; /* Choose a timing function (e.g., */
+  }
+  &__message-send {
+    position: relative;
+    button {
+      position: absolute;
+      left: 90%;
+      cursor: pointer;
+      top: 30%;
+      padding: 0;
+      border: none;
+      margin: 0;
+      width: 2em;
+      height: 2em;
+      background: transparent;
+      img {
+        width: 2em;
+        height: 2em;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@import 'apps/pgp-whatsapp/src/_variable.scss';
+
+.link-whatsapp {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin-top: 15%;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  &__placehloder {
+    width: 3em;
+    height: 3em;
+  }
+
+  &__img-wrapper {
+    width: 16em;
+    height: 16em;
+    border-radius: 8px;
+    border: 2px solid $wa-green;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button {
+    background-color: $wa-green;
+    border: none;
+    padding: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    :hover {
+      background-color: white;
+      border: 1px solid $wa-green;
+    }
+    p {
+      font-family: 'Roboto Mono', monospace;
+    }
+  }
+}

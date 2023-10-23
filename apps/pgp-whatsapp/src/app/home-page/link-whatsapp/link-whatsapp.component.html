@@ -1,0 +1,25 @@
+<div class="link-whatsapp">
+  <div class="link-whatsapp__header"></div>
+  <div class="link-whatsapp__body">
+    <div class="link-whatsapp__img-wrapper">
+      <img
+        *ngIf="!!qrCode; else loader"
+        src="data:image/png;base64,{{ qrCode }}"
+      />
+      <ng-template #loader>
+        <img
+          *ngIf="!loadingQr; else loader"
+          class="link-whatsapp__placehloder"
+          src="../../../assets/logo.png"
+        />
+        <ng-template #loader>
+          <app-spinner></app-spinner>
+        </ng-template>
+      </ng-template>
+    </div>
+
+    <button (click)="whatsappAuth()" class="link-whatsapp__btn-link">
+      Link whatsapp
+    </button>
+  </div>
+</div>

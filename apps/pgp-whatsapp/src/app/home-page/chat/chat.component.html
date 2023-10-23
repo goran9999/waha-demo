@@ -1,0 +1,49 @@
+<div class="chat">
+  <div class="chat__header">
+    <div class="chat__user-data" *ngIf="!!user">
+      <img class="chat__user-image" src="{{ user.image }}" />
+      <p class="chat__name">{{ user.name }}</p>
+      <p class="chat__phone">(+{{ user.phoneNumbers[0] }})</p>
+    </div>
+  </div>
+  <div class="chat__body">
+    <div id="drawer" class="chat__drawer">
+      <div
+        (click)="onSelectedChat(chat)"
+        class="chat__item"
+        *ngFor="let chat of chats"
+      >
+        <img
+          *ngIf="!!chat.contactImage; else placeholder"
+          class="chat__chat-img"
+          src="{{ chat.contactImage }}"
+        />
+        <ng-template #placeholder>
+          <img class="chat__placeholder" src="../../../assets/whatsapp.png" />
+        </ng-template>
+        <div class="chat__last-message">
+          <div class="chat__item-heading">
+            <p>{{ chat.name }}</p>
+            <p class="chat__time">
+              {{ getFormatedDate(chat.lastMessage.sentAt) }}
+            </p>
+          </div>
+          <p>{{ chat.lastMessage.body?.slice(0, 20) }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat__message">
+      <div class="chat__no-selected" *ngIf="!!!selectedChat; else chatBox">
+        <img src="../../../assets/logo.png" />
+        <p>Please select chat</p>
+      </div>
+      <ng-template #chatBox>
+        <app-chat-box
+          [messages]="chatMessages"
+          [selectedChat]="selectedChat"
+        ></app-chat-box>
+      </ng-template>
+    </div>
+  </div>
+</div>
